@@ -15,7 +15,7 @@ import java. util.*;
  */
 public class Quick {
 
-    public static void main(String []args){
+    public void main(String []args){
         BufferedReader bf = null;
         String direccion = "C:\\Users\\Andres\\Documents\\NetBeansProjects\\Hoja3\\numeros.txt";
         String texto = "";
@@ -54,17 +54,52 @@ public class Quick {
         //sort va aca
         long startTime = System.currentTimeMillis();
         
-	
+	ordenar(var);
         
         long time_end = System.currentTimeMillis();
         System.out.println(time_end - startTime);
         
         
     }
-    public static int QuickSort(int var[], int left, int right){
-        
-        
-        
-        return 1;
+    
+    public void ordenar(int[] var){
+        var = QuickSort1(var);
+    }
+    public int[] QuickSort1(int[] var){
+        return QuickSort2(var, 0, var.length-1);
+    }
+    public int[] QuickSort2(int var[], int left, int right){
+        if(left >= right){
+            return var;
+        }
+        int i = left, d = right;
+        if(left != right){
+            int pivote;
+            int aux;
+            pivote = left;
+            while (left != right){
+                while(var[right] >= var[pivote] && left < right){
+                    right--;
+                    while(var[left] < var[pivote] && left < right){
+                        left++;
+                    }
+                }
+            
+                if(right != left){
+                    aux = var[right];
+                    var[right] = var[left];
+                    var[left] = aux;
+                }
+            
+                if(left == right){
+                    QuickSort2(var, i, left-1);
+                    QuickSort2(var, left+1, d);
+                }            
+            }
+        }
+        else{
+             return var;
+        }
+        return var;
     }
 }
