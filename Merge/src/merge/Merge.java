@@ -97,6 +97,7 @@ public class Merge {
                 }
                 while(arrLeft.length != j){
                     var[i] = arrLeft[j];
+                    
                     i++;
                     j++;
                 }
