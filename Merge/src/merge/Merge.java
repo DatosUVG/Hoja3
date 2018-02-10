@@ -13,7 +13,7 @@ import java.io.*;
  */
 public class Merge {
 
-    public static void main(String []args){
+    public void main(String []args){
         BufferedReader bf = null;
         String direccion = "C:\\Users\\Andres\\Documents\\NetBeansProjects\\Hoja3\\numeros.txt";
         String texto = "";
@@ -53,7 +53,7 @@ public class Merge {
         long startTime = System.currentTimeMillis();
         // ----> aca
         
-        
+        Merge(array);
 	
         long time_end = System.currentTimeMillis();
         System.out.println(time_end - startTime);
