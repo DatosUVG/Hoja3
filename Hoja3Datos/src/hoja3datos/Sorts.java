@@ -10,14 +10,15 @@ package hoja3datos;
  * @author Andres
  */
 public class Sorts {
-    public int [] Gnome(int [] var, String [] parts){
+    public int [] Gnome(int [] var){        
         int i;
-        for(i = 0; i < parts.length; i++){
-            if(var[i] <= var[i-1]){
+        int temp;
+        for(i = 1; i < var.length; i++){
+            if(var[i - 1] <= var[i]){
                 i++;
             }
             else{
-                int temp = var[i];
+                temp = var[i];
                 var[i] = var[i-1];
                 var[i-1] = temp;
                 --i;            
@@ -28,58 +29,70 @@ public class Sorts {
         }
         return var;
     }
+    public static int [] mergeSort(int[] array){
+        /*if(array.length <= 1){
+            return array;
+        }*/
+        
+        int medio = array.length / 2;
+        int []left = new int[medio];
+        int [] right = new int[medio];
+        int [] result = new int[array.length];
+        int x = 0;
+        
+        //asignacion de las dos partes
+        for(int i = 0; i < medio; i++){
+            left[i] = array[i];
+        }
+        for(int i = medio; i < medio; i++){
+            if(x < right.length){
+                right[x] = array[i];
+                x++;
+            }
+        }
+        //separacion de las dos partes (otra vez)
+        left = mergeSort(left);
+        right = mergeSort(right);
+        
+        result = Merge(array, left, right);
+        
+        
+        return result;
+    }
     
-    public int[] Merge( int [] var){
-            int i, j, k;
-            if(var.length > 1){
-                int le = var.length / 2;
-                int ri = var.length - le;
-                int arrLeft[] = new int[le];
-                int arrRight[] = new int[ri];
-                
-                //copiando los elementos a la izquierda
-                for(i = 0; i < le; i++){
-                    arrLeft[i] = var[i];
+    public static int[] Merge( int []array, int []left, int []right){
+        int []resul = new int[array.length];
+        int indexL = 0;
+        int indexR = 0;
+        int indexRes = 0;
+        
+        while(indexL < left.length || indexR < right.length){
+            if(indexL < left.length && indexR < right.length){
+                if(left[indexL] <= right[indexR]){
+                    resul[indexRes] = left[indexL];
+                    indexL++;
+                    indexR++;
                 }
-                //copiando los elementos a la derecha
-                for (i = le; i < le + ri; i++){
-                    arrRight[i - le] = var[i];
-                }
-                
-                arrLeft = Merge(arrLeft);
-                arrRight = Merge(arrRight);
-                i = 0;
-                j = 0;
-                k = 0;
-                while(arrLeft.length != j && arrRight.length != k){
-                    if(arrLeft[i] < arrRight[j]){
-                        var[i] = arrLeft[k];
-                        i++;
-                        j++;
-                    }
-                    else{
-                        var[i] = arrRight[k];
-                        i++;
-                        k++;
-                    }
-                }
-                while(arrLeft.length != j){
-                    var[i] = arrLeft[j];
-                    
-                    i++;
-                    j++;
-                }
-                while(arrRight.length != k){
-                    var[i] = arrRight[k];
-                    i++;
-                    k++;
+                else{
+                    resul[indexRes] = right[indexR];
+                    indexR++;
+                    indexRes++;
                 }
             }
-            return var;
+            else if(indexL < left.length){
+                resul[indexRes] = left[indexL];
+                indexL++;
+                indexRes++;
+            }
+            
+        }
+        
+            return resul;
         }
     
-    public void ordenar(int[] var){
+    public int [] ordenar(int[] var){
         var = QuickSort1(var);
+        return var;
     }
     public int[] QuickSort1(int[] var){
         return QuickSort2(var, 0, var.length-1);
@@ -149,6 +162,42 @@ public class Sorts {
             arr=array;
         }
         return arr;
+    }
+    
+    
+    public int [] Cocktail(int [] array){
+        boolean flag = true;
+        int i = 0;
+        int j = array.length - 1;
+        while (i < j && flag){
+            flag = false;
+            //se recorre el array ascendentemente
+            for(int k = i; k < j; k++){
+                //if para el cambio de lugar
+                if(array[k] > array[k +1]){
+                    int temp = array[k];
+                    array[k] = array[k + 1];
+                    array[k + 1] = temp;
+                    flag = true;
+                }
+            }
+            
+            j--;
+            
+            if(flag){
+                flag = false;
+                //se recorre descendentemente
+                for(int k = j; k > i; k--){
+                    if(array[k] < array[k - 1]){
+                        int temp = array[k];
+                        array[k] = array[k - 1];
+                        array[k - 1] = temp;
+                        flag = true;
+                    }
+                }
+            }
+        }
+        return array;
     }
     
 }
