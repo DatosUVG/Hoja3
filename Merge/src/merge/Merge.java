@@ -53,54 +53,60 @@ public class Merge {
         long startTime = System.currentTimeMillis();
         // ----> aca
         
-	if(array.length > 1)
-	{	
-		int elementsInA1 = array.length / 2;
-		
-		int elementsInA2 = array.length - elementsInA1;
-                
-		int arr1[] = new int[elementsInA1];
-		int arr2[] = new int[elementsInA2];
-		
-		for(int k = 0; k < elementsInA1; k++)
-			arr1[i] = array[i];
-		for(int k = elementsInA1; k < elementsInA1 + elementsInA2; k++)
-			arr2[i - elementsInA1] = array[i];
-		arr1 = mergeSort(arr1);
-		arr2 = mergeSort(arr2);
-		int i = 0, j = 0, k = 0;
-		while(arr1.length != j && arr2.length != k)
-		{
-			if(arr1[j] < arr2[k])
-			{
-				array[i] = arr1[j];
-				i++;
-				j++;
-			}
-			else
-			{
-				array[i] = arr2[k];
-				i++;
-				k++;
-			}
-		}
-		while(arr1.length != j)
-		{
-			array[i] = arr1[j];
-			i++;
-			j++;
-		}
-		while(arr2.length != k)
-		{
-			array[i] = arr2[k];
-			i++;
-			k++;
-		}
-	}
+        
+	
         long time_end = System.currentTimeMillis();
         System.out.println(time_end - startTime);
         
         
     }
+    
+    public int[] Merge( int [] var){
+            int i, j, k;
+            if(var.length > 1){
+                int le = var.length / 2;
+                int ri = var.length - le;
+                int arrLeft[] = new int[le];
+                int arrRight[] = new int[ri];
+                
+                //copiando los elementos a la izquierda
+                for(i = 0; i < le; i++){
+                    arrLeft[i] = var[i];
+                }
+                //copiando los elementos a la derecha
+                for (i = le; i < le + ri; i++){
+                    arrRight[i - le] = var[i];
+                }
+                
+                arrLeft = Merge(arrLeft);
+                arrRight = Merge(arrRight);
+                i = 0;
+                j = 0;
+                k = 0;
+                while(arrLeft.length != j && arrRight.length != k){
+                    if(arrLeft[i] < arrRight[j]){
+                        var[i] = arrLeft[k];
+                        i++;
+                        j++;
+                    }
+                    else{
+                        var[i] = arrRight[k];
+                        i++;
+                        k++;
+                    }
+                }
+                while(arrLeft.length != j){
+                    var[i] = arrLeft[j];
+                    i++;
+                    j++;
+                }
+                while(arrRight.length != k){
+                    var[i] = arrRight[k];
+                    i++;
+                    k++;
+                }
+            }
+            return var;
+        }
     
 }
