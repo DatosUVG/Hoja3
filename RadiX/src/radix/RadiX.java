@@ -14,7 +14,7 @@ import java.io.FileReader;
  */
 public class RadiX {
 
-    public static void main(String []args){
+    public void main(String []args){
         BufferedReader bf = null;
         String direccion = "C:\\Users\\Andres\\Documents\\NetBeansProjects\\Hoja3\\numeros.txt";
         String texto = "";
@@ -53,11 +53,43 @@ public class RadiX {
         //sort va aca
         long startTime = System.currentTimeMillis();
         
+        Radix(var);
         
         long time_end = System.currentTimeMillis();
         System.out.println(time_end - startTime);
         
         
+    }
+    
+    public int[] Radix(int[] array){
+        
+        int i;
+        int j;
+        int k;
+        
+        int arr[] = new int[array.length];
+        for (k = Integer.SIZE-1; k >= 0; k--){
+            int aux[] = new int[array.length];        
+            j=0;
+            
+            for (i=0;i<array.length;i++){
+                boolean mover = array[i] << k >=0;
+                
+                if(k ==0 ? !mover:mover){
+                    aux[j] = array[i]; 
+                    j++;
+                }else{
+                    array[i-j] = array[i];   
+                }
+            }
+            
+            for (i=j; i < aux.length; i++){
+                aux[i] = array[i-j];
+            }
+            array = aux;
+            arr=array;
+        }
+        return arr;
     }
     
 }
