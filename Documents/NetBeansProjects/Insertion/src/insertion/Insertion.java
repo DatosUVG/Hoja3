@@ -45,17 +45,20 @@ public class Insertion {
         for (int j = 0; j < parts.length; j++) {
 
             array[i] = Integer.parseInt(parts[i]);
-
+            array[] = insertionSort(array[i], direccion);
         }
         //System.out.println(parts[1]);
 
         //sort va aca
         long startTime = System.currentTimeMillis();
         // ----> aca
+   
+        
 
-    }
+    
 
-    public static void insertionSort(int[] a, String direction) {
+}
+     public void insertionSort(int[] a, String direction){
         int input, output;
         for (output = 1; output < a.length; output++) {
             int temporal = a[output];
@@ -67,5 +70,5 @@ public class Insertion {
             a[input] = temporal;
 
         }
-    }
 }
+
