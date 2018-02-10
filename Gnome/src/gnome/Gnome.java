@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Gnome {
     
-    public static void main(String []args){
+    public void main(String []args){
         BufferedReader bf = null;
         String direccion = "C:\\Users\\Andres\\Documents\\NetBeansProjects\\Hoja3\\numeros.txt";
         String texto = "";
