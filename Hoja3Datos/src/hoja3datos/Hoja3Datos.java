@@ -66,9 +66,9 @@ public class Hoja3Datos {
         }*/
         
         //Gnome
-        long startTime = System.currentTimeMillis();
+        double startTime = System.currentTimeMillis();
         gnom = s.Gnome(gnom);
-        long time_end = System.currentTimeMillis();
+        double time_end = System.currentTimeMillis();
         System.out.println("Gnome Sort = " + (time_end - startTime));
         //Debuggeando el sort
         /*for(int x = 0; x < var.length; x++){
@@ -80,10 +80,11 @@ public class Hoja3Datos {
         
         //Este da problemas, ya que tira un error de infinite recusrion
         
-        long startTim = System.currentTimeMillis();
+        double startTim = System.currentTimeMillis();
         //merg = s.mergeSort(merg);
-        long time_en = System.currentTimeMillis();
+        double time_en = System.currentTimeMillis();
         System.out.println("Merge Sort = " + (time_en - startTim));
+        System.out.println("HAY ERROR EN EL MERGE SORT");
         //Debuggeando el sort
         /*for(int x = 0; x < var.length; x++){
             System.out.println(merg[x] + " ");
@@ -91,9 +92,9 @@ public class Hoja3Datos {
         
         
         //Quick
-        long startTi = System.currentTimeMillis();
+        double startTi = System.currentTimeMillis();
         quicc = s.ordenar(quicc);
-        long time_e = System.currentTimeMillis();
+        double time_e = System.currentTimeMillis();
         System.out.println("Quick Sort = " + (time_e - startTi));
         //Debuggeando el sort
         /*for(int x = 0; x < var.length; x++){
@@ -102,9 +103,9 @@ public class Hoja3Datos {
         
         
         //Radix
-        long startT = System.currentTimeMillis();
+        double startT = System.currentTimeMillis();
         radix = s.Radix(radix);
-        long time = System.currentTimeMillis();
+        double time = System.currentTimeMillis();
         System.out.println("Radix Sort = " + (time - startT));
         //Debuggeando el sort
         /*for(int x = 0; x < var.length; x++){
@@ -113,9 +114,9 @@ public class Hoja3Datos {
         
         
         //Cocktail
-        long start = System.currentTimeMillis();
+        double start = System.currentTimeMillis();
         cocc = s.Cocktail(cocc);
-        long tim = System.currentTimeMillis();
+        double tim = System.currentTimeMillis();
         System.out.println("Cocktail Sort = " + (tim - start));
         //Debuggeando el sort
         /*for(int x = 0; x < var.length; x++){
